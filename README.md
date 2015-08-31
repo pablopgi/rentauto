@@ -34,7 +34,7 @@ Es necesario que el sistema tenga los siguientes servicios respetando la siguien
 
 Para el envió de mails tenemos el siguiente servicio escrito por otro grupo de trabajo:
 
-![Diagrama de clase mailing](https://drive.google.com/file/d/0BwLWxnCUu_qieTZoYTRpTHk3cUE/view?usp=sharing)
+![Diagrama de clase mailing](https://raw.githubusercontent.com/EPERS-UNQ/rentauto/documentation/EnviadorDeMails.png)
 
 Para la entrega es necesario que se implementen los tests necesarios para probar la funcionalidad expuesta. 
 En el caso del `EnviadorDeMails` se debe realizar un mock del mismo y testearlo funcionando y tirando una excepción.
