@@ -5,7 +5,7 @@ El TP va a estar dividido en entregas. Cada una de las entregas del TP irá agre
 
 La fecha de entrega incluye el trabajo durante ese día. O sea que tienen que entregarlo al final de la clase.
 
-## Entrega #1 - Usuarios.
+## Entrega #1: Usuarios.
 Fecha de Entrega: 07/09
 
 La primera entrega tiene como objetivo implementar el registro de usuarios y el login de los mismos. 
