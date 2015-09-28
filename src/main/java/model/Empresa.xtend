@@ -1,4 +1,4 @@
-package ar.edu.unq.epers.model
+package model
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -15,7 +15,7 @@ class Empresa {
 	Double valorMaximoPorDia
 	List<Categoria> categoriasAdmitidas = newArrayList
 	
-	def agregarReserva(Reserva unaReserva){
+	def void agregarReserva(Reserva unaReserva){
 		unaReserva.validarReserva
 		reservas.add(unaReserva)
 	}

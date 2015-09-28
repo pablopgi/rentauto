@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+    <class name="model.Categoria" table="categorias" discriminator-value="Categoria_Abs">
+        <id name="id" type="integer" column="id">
+            <generator class="increment"/>
+        </id>
+    <discriminator column="tipo_categoria" type="string"/>
+    <property name="nombre" type="string" column="nombre" length="20"/>
+    <subclass  name="model.Turismo" discriminator-value="Turismo"/>
+    <subclass  name="model.Familiar" discriminator-value="Familiar"/>
+    <subclass  name="model.Deportivo" discriminator-value="Deportivo"/>
+    <subclass  name="model.TodoTerreno" discriminator-value="TodoTerreno"/>
+    </class>
+</hibernate-mapping>

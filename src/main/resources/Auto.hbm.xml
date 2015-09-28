@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+    <class name="model.Auto" table="autos" >
+        <id name="id" type="integer" column="id">
+            <generator class="increment" />
+        </id>
+        <property name="marca" type="string" column="marca" length="20"/>                
+        <property name="modelo" type="string" column="modelo" length="20"/>
+        <property name="patente" type="string" column="patente" length="20"/>
+        <property name="anio" type="int" column="anyo"/>
+		<property name="costoBase" type="double" column="costoBase"/>
+    	<many-to-one name="categoria" column="categoria" cascade="all"/>
+    	<many-to-one name="ubicacionInicial" column="ubicacionInicial" cascade="all"/>
+        <set name="reservas">
+        	<key column="id"/>
+            <one-to-many class="model.Reserva"/>
+        </set>
+    </class>
+</hibernate-mapping>

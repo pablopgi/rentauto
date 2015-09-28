@@ -1,7 +1,18 @@
 package ar.edu.unq.epers.model
 
+import model.Auto
+import model.Categoria
+import model.Empresa
+import model.Familiar
+import model.IUsuario
+import model.ServiciosExpuestos
+import model.Ubicacion
+import model.Usuario
 import org.junit.Before
+
 import static org.mockito.Mockito.*
+import home.UsuarioLogInHome
+import java.util.Date
 
 class AbstractTest {
 	protected Auto auto
@@ -11,6 +22,10 @@ class AbstractTest {
 	protected IUsuario usuarioPrueba
 	protected IUsuario usuarioEmpresa
 	protected Empresa empresa
+	protected UsuarioLogInHome homePrueba
+	protected Usuario usuarioRegistro
+	protected ServiciosExpuestos servicioExpuesto
+	protected Usuario userNuevo
 
 	@Before
 	def void setUp() {
@@ -30,5 +45,16 @@ class AbstractTest {
 		]
 		
 		empresa.usuarios.add(usuarioEmpresa)
+		
+		homePrueba = mock(UsuarioLogInHome)
+		usuarioRegistro = mock(Usuario)
+		servicioExpuesto = new ServiciosExpuestos(homePrueba)
+		
+		userNuevo = new Usuario("alquimia",
+								"garrapiniada",
+								"artesanal",
+								"123@gmail.com",
+								new Date(1988,9,10),
+								"1234")
 	}
 }

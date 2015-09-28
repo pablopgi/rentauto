@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+    <class name="model.Reserva" table="reservas" >
+        <id name="id" type="integer" column="id">
+            <generator class="increment" />
+        </id>
+    <property name="numeroSolicitud" type="integer" column="numeroSolicitud"/>
+	<property name="inicio" type="date" column="inicio"/>
+	<property name="fin" type="date" column="fin"/>
+	<many-to-one name="origen" column="origen" class="model.Ubicacion" cascade="all"/>
+	<many-to-one name="destino" column="destino" class="model.Ubicacion" cascade="all"/>
+	<many-to-one name="auto" column="auto" class="model.Auto" cascade="all"/>
+	<many-to-one name="usuario" column="usuario" class="model.Usuario" cascade="all"/>
+	<joined-subclass name="model.ReservaEmpresarial" table="reservasEmpresariales">
+		<key column="id"/>
+		<property name="nombreContacto" type="string" column="nombreContacto"/>
+		<property name="cargoContacto" type="string" column="cargoContacto"/>
+		<many-to-one name="empresa" column="CUIT" class="model.Empresa" cascade="all"/>
+	</joined-subclass>
+    </class>
+</hibernate-mapping>

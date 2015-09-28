@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+    <class name="model.Ubicacion" table="ubicacion" >
+        <id name="id" type="java.lang.Integer" column="id">
+            <generator class="increment" />
+        </id>
+	    <property name="nombre" type="string" column="nombre" length="20"/>
+	    <joined-subclass name="model.UbicacionVirtual" table="ubicacion_virtual">
+	    	<key column="id_ubicacion_virtual"/>
+	    	<bag name="ubicaciones">
+	    		<key column="id_ubicacion_virtual"/>
+	    		<one-to-many class="model.Ubicacion"/>
+	    	</bag>
+	    </joined-subclass>
+    </class>
+</hibernate-mapping>

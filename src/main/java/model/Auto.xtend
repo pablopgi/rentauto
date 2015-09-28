@@ -1,4 +1,4 @@
-package ar.edu.unq.epers.model
+package model
 
 import java.util.Date
 import java.util.List
@@ -6,21 +6,26 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class Auto {
+	int id
 	String marca
 	String modelo
-	Integer año
+	Integer anio
 	String patente
 	Double costoBase
-	Categoria categoria
+		Categoria categoria
 	
-	//Debe estar ordenado
-	List<Reserva> reservas = newArrayList()
+	//Debe estar ordenados
+	List<Reserva> reservas
 	Ubicacion ubicacionInicial
+	
+	new(){
+		
+	}
 
 	new(String marca, String modelo, Integer anio, String patente, Categoria categoria, Double costoBase, Ubicacion ubicacionInicial){
 		this.marca = marca
 		this.modelo = modelo
-		this.año = anio
+		this.anio = anio
 		this.patente = patente
 		this.costoBase = costoBase
 		this.categoria = categoria

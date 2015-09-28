@@ -5,7 +5,7 @@ El TP va a estar dividido en entregas. Cada una de las entregas del TP irá agre
 
 La fecha de entrega incluye el trabajo durante ese día. O sea que tienen que entregarlo al final de la clase.
 
-## Entrega #1: Usuarios.
+## Entrega #1 - Usuarios.
 Fecha de Entrega: 07/09
 
 La primera entrega tiene como objetivo implementar el registro de usuarios y el login de los mismos. 
@@ -34,7 +34,7 @@ Es necesario que el sistema tenga los siguientes servicios respetando la siguien
 
 Para el envió de mails tenemos el siguiente servicio escrito por otro grupo de trabajo:
 
-![Diagrama de clase mailing](https://raw.githubusercontent.com/EPERS-UNQ/rentauto/documentation/EnviadorDeMails.png)
+![Diagrama de clase mailing](https://drive.google.com/file/d/0BwLWxnCUu_qieTZoYTRpTHk3cUE/view?usp=sharing)
 
 Para la entrega es necesario que se implementen los tests necesarios para probar la funcionalidad expuesta. 
 En el caso del `EnviadorDeMails` se debe realizar un mock del mismo y testearlo funcionando y tirando una excepción.

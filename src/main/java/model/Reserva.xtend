@@ -1,13 +1,15 @@
-package ar.edu.unq.epers.model
+package model
 
 import java.util.Date
 import org.eclipse.xtend.lib.annotations.Accessors
-import static ar.edu.unq.epers.extensions.DateExtensions.*
 import org.joda.time.DateTime
 import org.joda.time.Days
 
+import static ar.edu.unq.epers.extensions.DateExtensions.*
+
 @Accessors
 class Reserva {
+	int id
 	Integer numeroSolicitud
 	Ubicacion origen
 	Ubicacion destino
@@ -15,6 +17,10 @@ class Reserva {
 	Date fin
 	Auto auto
 	IUsuario usuario
+	
+	new(){
+		
+	}
 
 	def costo() {
 		val cantidadDeDias = Days.daysBetween(new DateTime(inicio), new DateTime(fin)).days
@@ -36,14 +42,12 @@ class Reserva {
 	}
 	
 	def seSuperpone(Date desde, Date hasta){
-		if(inicio <= desde && desde <= fin )
-			return true
-		if(inicio <= hasta && hasta <= fin )
-			return true
-		if(desde <= inicio && fin <= hasta)
-			return true
+		return((inicio <= desde && desde <= fin )
+			||
+		       (inicio <= hasta && hasta <= fin )
+			||
+		       (desde <= inicio && fin <= hasta))
 			
-		return false	
 	}
 	
 	def costoPorDia(){

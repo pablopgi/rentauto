@@ -1,10 +1,15 @@
-package ar.edu.unq.epers.model
+package model
 
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors 
 abstract class Categoria {
+	int id
 	String nombre
+	
+	new(){
+		
+	}
 	
 	abstract def Double calcularCosto(Auto auto)
 }
@@ -12,7 +17,7 @@ abstract class Categoria {
 
 class Turismo extends Categoria{
 	override calcularCosto(Auto auto) {
-		if(auto.año > 2000){
+		if(auto.anio > 2000){
 			return auto.costoBase * 1.10			
 		}else{
 			return auto.costoBase - 200
@@ -28,7 +33,7 @@ class Familiar extends Categoria{
 
 class Deportivo extends Categoria{
 	override calcularCosto(Auto auto) {
-		if(auto.año > 2000){
+		if(auto.anio > 2000){
 			return auto.costoBase * 1.30			
 		}else{
 			return auto.costoBase * 1.20
