@@ -1,13 +1,13 @@
 package services
 
-import org.neo4j.graphdb.GraphDatabaseService
-import home.AmigoHome
-import model.Usuario
+import home.RedSocialHome
 import model.TipoDeRelaciones
+import model.Usuario
+import org.neo4j.graphdb.GraphDatabaseService
 
-class AmigoService {
+class RedSocialService {
 	private def createHome(GraphDatabaseService graph) {
-		new AmigoHome(graph)
+		new RedSocialHome(graph)
 	}
 
 	def eliminarUsuario(Usuario user) {
@@ -19,7 +19,7 @@ class AmigoService {
 
 	def agregarUsuario(Usuario user) {
 		GraphServiceRunner::run[
-			createHome(it).crearNodo(user); 
+			createHome(it).crearNodoUser(user); 
 			null
 		]
 	}

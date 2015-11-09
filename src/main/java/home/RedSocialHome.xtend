@@ -10,7 +10,7 @@ import org.neo4j.graphdb.RelationshipType
 import model.TipoDeRelaciones
 
 @Accessors
-class AmigoHome {
+class RedSocialHome {
 	
 	GraphDatabaseService graph
 
@@ -22,12 +22,23 @@ class AmigoHome {
 		DynamicLabel.label("User")
 	}
 	
-	def crearNodo(Usuario user) {
+	private def msgLabel() {
+		DynamicLabel.label("Msg")
+	}
+	
+	def crearNodoUser(Usuario user) {
 		val node = this.graph.createNode(personLabel)
 		node.setProperty("nombre", user.nombre)
 		node.setProperty("apellido", user.apellido)
 		node.setProperty("mail", user.email)
 		node.setProperty("userName", user.nombreUsuario)
+	}
+	
+	def crearNodoMsg(Usuario user, String body){
+		val node = this.graph.createNode(msgLabel)
+		node.setProperty("user", user)
+		node.setProperty("body", body)
+		node.setProperty("enviado", false)		
 	}
 
 	def eliminarNodo(Usuario user) {
@@ -50,6 +61,11 @@ class AmigoHome {
 		nodo1.createRelationshipTo(nodo2, relacion);
 	}
 	
+	def enviarMsg(Usuario persona1, Usuario persona2, TipoDeRelaciones relacion) {
+		val nodo1 = this.getNodo(persona1);
+		val nodo2 = this.getNodo(persona2);
+		nodo1.createRelationshipTo(nodo2, relacion);
+	}
 	
 	private def toUsuario(Node nodo) {
 		new Usuario => [
