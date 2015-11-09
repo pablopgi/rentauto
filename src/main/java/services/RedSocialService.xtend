@@ -45,5 +45,12 @@ class RedSocialService {
 			val home = createHome(it)
 			home.getConexiones(user)
 		]
-	}	
+	}
+	
+	def enviarMensaje(Usuario userA, Usuario userB, String cuerpoMensaje){
+		GraphServiceRunner::run[
+			val home = createHome(it)
+			home.enviarMsg(userA, userB, cuerpoMensaje)
+		]
+	}
 }

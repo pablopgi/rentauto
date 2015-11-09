@@ -8,6 +8,8 @@ import org.neo4j.graphdb.Node
 import org.neo4j.graphdb.Direction
 import org.neo4j.graphdb.RelationshipType
 import model.TipoDeRelaciones
+import org.neo4j.graphdb.traversal.Evaluators
+import org.neo4j.graphdb.traversal.TraversalDescription
 
 @Accessors
 class RedSocialHome {
@@ -34,11 +36,10 @@ class RedSocialHome {
 		node.setProperty("userName", user.nombreUsuario)
 	}
 	
-	def crearNodoMsg(Usuario user, String body){
+	def crearNodoMsg(String body){
 		val node = this.graph.createNode(msgLabel)
-		node.setProperty("user", user)
 		node.setProperty("body", body)
-		node.setProperty("enviado", false)		
+		node		
 	}
 
 	def eliminarNodo(Usuario user) {
@@ -61,10 +62,12 @@ class RedSocialHome {
 		nodo1.createRelationshipTo(nodo2, relacion);
 	}
 	
-	def enviarMsg(Usuario persona1, Usuario persona2, TipoDeRelaciones relacion) {
+	def enviarMsg(Usuario persona1, Usuario persona2, String body) {
 		val nodo1 = this.getNodo(persona1);
 		val nodo2 = this.getNodo(persona2);
-		nodo1.createRelationshipTo(nodo2, relacion);
+		val msg = this.crearNodoMsg(body);
+		nodo1.createRelationshipTo(msg, TipoDeRelaciones.EMISOR);
+		msg.createRelationshipTo(nodo2, TipoDeRelaciones.RECEPTOR);
 	}
 	
 	private def toUsuario(Node nodo) {
@@ -84,8 +87,12 @@ class RedSocialHome {
 
 	
 	def getConexiones(Usuario user) {
-		this.getAmigos(user).map[getAmigos(it)].flatten.toSet
-		//conexiones.map[this.getHijos(it)].flatten.toSet
+		val nodoUsuario = this.getNodo(user)
+	    val TraversalDescription td = graph.traversalDescription()
+	            .breadthFirst()
+	            .relationships( TipoDeRelaciones.AMIGO, Direction.OUTGOING )
+	            .evaluator( Evaluators.excludeStartPosition() );
+	    td.traverse(nodoUsuario).nodes.map[toUsuario].toSet
 	}
 
 	protected def nodosRelacionados(Node nodo, RelationshipType tipo, Direction direccion) {
