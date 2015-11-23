@@ -47,6 +47,10 @@ class RedSocialService {
 		]
 	}
 	
+	def esAmigoDe(Usuario user, Usuario amigo){
+		amigosDe(user).exists[it | it.nombreUsuario == amigo.nombreUsuario]
+	}
+	
 	def enviarMensaje(Usuario userA, Usuario userB, String cuerpoMensaje){
 		GraphServiceRunner::run[
 			val home = createHome(it)
