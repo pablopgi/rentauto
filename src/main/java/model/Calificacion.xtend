@@ -8,10 +8,10 @@ import org.mongojack.ObjectId
 class Calificacion {
 	
 	var String nombreUsuario
-	var Integer numeroSolicitud
 	var TipoDeCalificacion tipocalificacion
 	var String comentario
 	var Privacidad privacidad
+	var Auto auto
 	@ObjectId
 	@JsonProperty("_id")
 	var String id
@@ -20,17 +20,12 @@ class Calificacion {
 		
 	}
 	
-	new(String userName, Integer numSol,TipoDeCalificacion calificacion, String comentario, Privacidad privacidad){
+	new(String userName, TipoDeCalificacion calificacion, String comentario, Privacidad privacidad, Auto auto){
 		this.privacidad = privacidad
 		this.tipocalificacion = calificacion
 		this.comentario = comentario
 		nombreUsuario = userName
-		numeroSolicitud = numSol
-	}
-	
-	override equals(Object obj){
-		val otroComentario = obj as Calificacion
-		id == otroComentario.id && numeroSolicitud == otroComentario.numeroSolicitud
+		this.auto = auto
 	}
 	
 }

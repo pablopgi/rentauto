@@ -27,10 +27,10 @@ class PerfilDeUsuarioService {
 		                    Privacidad privacidad, 
 		                    String comentario) {
 		val calif = new Calificacion(user.nombreUsuario, 
-			                                reserva.numeroSolicitud, 
-			                                calificacion, 
-			                                comentario, 
-			                                privacidad)
+									 calificacion, 
+									 comentario, 
+									 privacidad, 
+									 reserva.auto)
 
 		val perfil = home.buscarPerfil(user)
 		
@@ -39,20 +39,20 @@ class PerfilDeUsuarioService {
 	}
 
 	def consultarPerfil(Usuario usuarioActual, Usuario usuarioDestino) {
-		
+
+		//Busco todo el perfil del usuario que quiero
 		val perfil = home.buscarPerfil(usuarioDestino)
 		val calificaciones = perfil.calificaciones.get(Privacidad.PUBLICO)
 
+		//Consulta de perfil propio
 		if (usuarioActual == usuarioDestino) {
 			calificaciones.addAll(perfil.calificaciones.get(Privacidad.AMIGOS))
 			calificaciones.addAll(perfil.calificaciones.get(Privacidad.PRIVADO))
 		}
-
-		if ((new RedSocialService).esAmigoDe(usuarioActual, usuarioDestino)) {
+		//Consulta de perfil de amigo
+		else if ((new RedSocialService).esAmigoDe(usuarioActual, usuarioDestino)) {
 			calificaciones.addAll(perfil.calificaciones.get(Privacidad.AMIGOS))
 		}
-		buscarPerfil(usuarioDestino).to_consulta(calificaciones)
-		
+		calificaciones
 	}
-
 }

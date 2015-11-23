@@ -17,7 +17,4 @@ class PerfilDeUsuario {
 		calificaciones.get(privacidad).add(calificacion);
 	}
 	
-	def to_consulta(Set<Calificacion> calificaciones){
-		new ConsultaDePerfil(nombreUsuario, nombre, apellido, calificaciones)
-	}
 }

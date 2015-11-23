@@ -10,10 +10,10 @@
 	    <property name="nombre" type="string" column="nombre" length="20"/>
 	    <joined-subclass name="model.UbicacionVirtual" table="ubicacion_virtual">
 	    	<key column="id_ubicacion_virtual"/>
-	    	<bag name="ubicaciones">
+	    	<set name="ubicaciones">
 	    		<key column="id_ubicacion_virtual"/>
 	    		<one-to-many class="model.Ubicacion"/>
-	    	</bag>
+	    	</set>
 	    </joined-subclass>
     </class>
 </hibernate-mapping>

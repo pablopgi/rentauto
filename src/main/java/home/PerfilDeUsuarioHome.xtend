@@ -19,17 +19,19 @@ class PerfilDeUsuarioHome {
 		perfiles.mongoCollection.drop
 	}
 
+	//Agrego un perfil de usuario nuevo
 	def agregarPerfil(Usuario user){
 		perfiles.insert(user.toPerfil)
 	}
 	
+	//Busco el perfil completo de un usuario por su nombre de usuario
 	def buscarPerfil(Usuario user) {
 		perfiles.mongoCollection.findOne(DBQuery.is("_id", user.nombreUsuario))
 	}
 
+	//Reemplazo el antiguo perfil por el nuevo perfil modificado 
 	def updatePerfil(PerfilDeUsuario perfil){
-		perfiles.mongoCollection.updateById(perfil.nombreUsuario,perfil)
+		perfiles.mongoCollection.updateById(perfil.nombreUsuario, perfil)
 	}
-	
-	
+
 }
