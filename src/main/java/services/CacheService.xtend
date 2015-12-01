@@ -38,6 +38,10 @@ class CacheService {
 	def void guardarAuto(Auto auto, Ubicacion lugar, Date fecha){
 		home.insert(autoCacheToJson(new AutoCache(auto)),ubicacionToJson(lugar),convertDate(fecha))
 	}
+	
+	def void guardarAutos(List<Auto> autos, Ubicacion lugar, Date fecha){
+		autos.forEach[guardarAuto(it,lugar,fecha)]
+	}
 
 	def void eliminarAuto(Auto auto, Ubicacion lugar, Date fecha){
 		home.delete(autoCacheToJson(new AutoCache(auto)),ubicacionToJson(lugar),convertDate(fecha))
