@@ -12,7 +12,7 @@ class Auto {
 	Integer anio
 	String patente
 	Double costoBase
-		Categoria categoria
+	Categoria categoria
 	
 	//Debe estar ordenados
 	List<Reserva> reservas
