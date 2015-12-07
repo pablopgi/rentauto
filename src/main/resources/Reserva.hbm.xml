@@ -4,7 +4,7 @@
  
 <hibernate-mapping>
     <class name="model.Reserva" table="reservas" >
-        <id name="id" type="integer" column="id">
+        <id name="id" type="integer" column="idReserva">
             <generator class="increment" />
         </id>
     <property name="numeroSolicitud" type="integer" column="numeroSolicitud"/>
@@ -18,7 +18,7 @@
 		<key column="id"/>
 		<property name="nombreContacto" type="string" column="nombreContacto"/>
 		<property name="cargoContacto" type="string" column="cargoContacto"/>
-		<many-to-one name="empresa" column="CUIT" class="model.Empresa" cascade="all"/>
+		<many-to-one name="empresa" column="cuit" class="model.Empresa" cascade="all"/>
 	</joined-subclass>
     </class>
 </hibernate-mapping>

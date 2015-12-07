@@ -4,7 +4,7 @@
  
 <hibernate-mapping>
     <class name="model.Usuario" table="usuarios" >
-        <id name="id" type="integer" column="id">
+        <id name="id" type="integer" column="idUsuario">
             <generator class="increment" />
         </id>
         <property name="nombre" type="string" column="NOMBRE" length="20"/>
@@ -14,9 +14,9 @@
         <property name="fechaNacimiento" type="date" column="fechaNacimiento"/>
         <property name="estaValidada" type="boolean" column="estaValidada"/>
         <property name="password" type="string" column="password" length="20"/>
-        <set name="reservas">
+        <bag name="reservas">
         	<key column="id"/>
             <one-to-many class="model.Reserva"/>
-        </set>
+        </bag>
     </class>
 </hibernate-mapping>

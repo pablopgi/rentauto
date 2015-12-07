@@ -4,7 +4,7 @@
  
 <hibernate-mapping>
     <class name="model.Categoria" table="categorias" discriminator-value="Categoria_Abs">
-        <id name="id" type="integer" column="id">
+        <id name="id" type="integer" column="idCategoria">
             <generator class="increment"/>
         </id>
     <discriminator column="tipo_categoria" type="string"/>

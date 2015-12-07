@@ -14,7 +14,7 @@ class ReservaService {
 	def crearReserva(Reserva reserva) {
 		SessionManager.runInSession([
 			new ReservaHome().save(reserva)
-			Reserva
+			reserva
 		]);
 	}
 }

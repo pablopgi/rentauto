@@ -52,6 +52,13 @@ class SessionManager {
 	def static Session getSession() {
 		tlSession.get();
 	}
+	
+    def synchronized static resetSessionFactory() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+            sessionFactory = null;
+        }
+    }
 
 
 }

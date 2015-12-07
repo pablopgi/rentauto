@@ -14,9 +14,9 @@
 		<property name="costoBase" type="double" column="costoBase"/>
     	<many-to-one name="categoria" column="categoria" cascade="all"/>
     	<many-to-one name="ubicacionInicial" column="ubicacionInicial" cascade="all"/>
-        <set name="reservas">
+        <bag name="reservas">
         	<key column="id"/>
             <one-to-many class="model.Reserva"/>
-        </set>
+        </bag>
     </class>
 </hibernate-mapping>

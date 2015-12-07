@@ -5,20 +5,20 @@
 <hibernate-mapping>
     <class name="model.Empresa" table="empresas" >
         <id name="cuit" type="string" column="cuit">
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
     <property name="nombreEmpresa" type="string" column="nombreEmpresa" length="30"/>
 	<property name="cantidadMaximaDeReservasActivas" type="integer" column="cantidadMaximaDeReservasActivas"/>
     <set name="reservas">
-    	<key column="id"/>
+    	<key column="cuit"/>
         <one-to-many class="model.Reserva"/>
     </set>
     <set name="usuarios">
-    	<key column="id"/>
+    	<key column="cuit"/>
         <one-to-many class="model.Usuario"/>
     </set>
     <set name="categoriasAdmitidas">
-    	<key column="id"/>
+    	<key column="cuit"/>
         <one-to-many class="model.Categoria"/>
     </set>
     <property name="valorMaximoPorDia" type="double" column="valorMaximoPorDia"/>

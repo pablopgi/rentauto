@@ -15,7 +15,7 @@ class AutoService {
 	def crearAuto(Auto auto) {
 		SessionManager.runInSession([
 			new AutoHome().save(auto)
-			Auto
+			auto
 		]);
 	}
 	

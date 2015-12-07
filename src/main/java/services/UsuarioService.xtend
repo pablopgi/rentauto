@@ -15,7 +15,7 @@ class UsuarioService {
 	def crearUsuario(Usuario user) {
 		SessionManager.runInSession([
 			new UsuarioHome().save(user)
-			Usuario
+			user
 		]);
 	}
 	

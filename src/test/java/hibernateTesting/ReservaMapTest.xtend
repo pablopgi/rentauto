@@ -8,12 +8,17 @@ import model.Familiar
 import model.Auto
 import java.util.Date
 import model.Usuario
+
 import org.junit.Test
+import static org.junit.Assert.*
+import org.junit.After
+import home.SessionManager
 
 class ReservaMapTest {
 	
 	Reserva reserva
 	ReservaService service
+	int idReservaGen
 	
 	@Before
 	def void setUp(){
@@ -37,6 +42,17 @@ class ReservaMapTest {
 	@Test
 	def void guardoUnaReservaEnLaDB(){
 		service.crearReserva(reserva)
+	}
+	
+	@Test
+	def void consultoUnaReservaGuardada(){
+		idReservaGen = service.crearReserva(reserva).id
+		assertEquals(reserva.numeroSolicitud, service.consultarReserva(idReservaGen).numeroSolicitud)
+	}
+	
+	@After
+	def void limpiar() {
+	    SessionManager::resetSessionFactory()
 	}
 	
 }

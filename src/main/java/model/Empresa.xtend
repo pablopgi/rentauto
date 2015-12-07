@@ -5,6 +5,11 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors 
 class Empresa {
+	
+	new() {
+		
+	}
+	
 	String cuit
 	String nombreEmpresa
 	

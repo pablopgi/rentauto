@@ -15,7 +15,7 @@ class Auto {
 	Categoria categoria
 	
 	//Debe estar ordenados
-	List<Reserva> reservas
+	List<Reserva> reservas = newArrayList
 	Ubicacion ubicacionInicial
 	
 	new(){

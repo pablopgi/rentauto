@@ -17,7 +17,7 @@ class Usuario implements IUsuario{
 	String codigoValidacion
 	String password
 	
-	List<Reserva> reservas
+	List<Reserva> reservas = newArrayList
 
 	//Estructura
 	
