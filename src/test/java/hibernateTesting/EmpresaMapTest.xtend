@@ -1,15 +1,16 @@
 package hibernateTesting
 
+import home.SessionManager
 import java.util.ArrayList
+import java.util.HashSet
 import model.Categoria
 import model.Empresa
 import model.IUsuario
 import model.Reserva
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import services.EmpresaService
-import org.junit.After
-import home.SessionManager
 
 class EmpresaMapTest {
 	
@@ -22,9 +23,9 @@ class EmpresaMapTest {
 			cuit = ''
 			nombreEmpresa = ''
 			valorMaximoPorDia = 0.0
-			usuarios = new ArrayList<IUsuario> ()
-			reservas = new ArrayList<Reserva> ()
-			categoriasAdmitidas = new ArrayList<Categoria>()
+			usuarios = new HashSet<IUsuario> ()
+			reservas = new HashSet<Reserva> ()
+			categoriasAdmitidas = new HashSet<Categoria>()
 			cantidadMaximaDeReservasActivas = 1
 		]
 		service = new EmpresaService

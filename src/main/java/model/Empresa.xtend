@@ -1,6 +1,6 @@
 package model
 
-import java.util.List
+import java.util.Set
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors 
@@ -13,12 +13,12 @@ class Empresa {
 	String cuit
 	String nombreEmpresa
 	
-	List<IUsuario> usuarios = newArrayList
-	List<Reserva> reservas = newArrayList
+	Set<IUsuario> usuarios 	
+	Set<Reserva> reservas
 
 	int cantidadMaximaDeReservasActivas
 	Double valorMaximoPorDia
-	List<Categoria> categoriasAdmitidas = newArrayList
+	Set<Categoria> categoriasAdmitidas
 	
 	def void agregarReserva(Reserva unaReserva){
 		unaReserva.validarReserva

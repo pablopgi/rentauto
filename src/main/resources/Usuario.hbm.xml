@@ -15,7 +15,7 @@
         <property name="estaValidada" type="boolean" column="estaValidada"/>
         <property name="password" type="string" column="password" length="20"/>
         <bag name="reservas">
-        	<key column="id"/>
+        	<key column="idUsuario"/>
             <one-to-many class="model.Reserva"/>
         </bag>
     </class>

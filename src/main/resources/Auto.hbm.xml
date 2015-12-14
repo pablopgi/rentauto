@@ -12,9 +12,9 @@
         <property name="patente" type="string" column="patente" length="20"/>
         <property name="anio" type="int" column="anyo"/>
 		<property name="costoBase" type="double" column="costoBase"/>
-    	<many-to-one name="categoria" column="categoria" cascade="all"/>
-    	<many-to-one name="ubicacionInicial" column="ubicacionInicial" cascade="all"/>
-        <bag name="reservas">
+    	<many-to-one name="categoria" column="categoria" class="model.Categoria" cascade="all"/>
+    	<many-to-one name="ubicacionInicial" column="ubicacionInicial" class="model.Ubicacion" cascade="all"/>
+        <bag name="reservas" inverse="true">
         	<key column="id"/>
             <one-to-many class="model.Reserva"/>
         </bag>
